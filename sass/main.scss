@@ -1,0 +1,270 @@
+$primary-color: rgba(255,239,231,1);
+$secondary-color: #FFDAC6;
+$tertiary-color: #BABD8D;
+$primary-text-color: #7C6A0A;
+$font-stack:'IBM Plex Sans', sans-serif;
+$parragraph-size: 25px;
+
+@mixin FlexCenter($direction,$content,$align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $content;
+    align-items: $align;
+}
+
+@mixin buttonStyle {
+    button {
+        background-color: none;
+        border: none;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: $primary-color;
+    font-family: $font-stack;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.navbar {
+    padding: 35px;
+    width: 100%;
+    height: 150px;
+    @include FlexCenter(row, space-between, center);
+
+    p {
+        font-size: $parragraph-size;
+        color: $primary-text-color;
+        font-weight: 700;
+    }
+    .navbar-icon {
+        margin: 0 15px;
+        @include buttonStyle();
+        @include FlexCenter(row, space-between, center);
+    }
+}
+
+.main-article {
+    width: 100%;
+    margin: 100px auto;
+    color: $primary-text-color;
+    @include FlexCenter(row, center, center);
+    &--impact {
+        width: 50%;
+        margin: 0 50px;
+        h1 {
+            font-size: 60px;
+            font-weight: 600;
+            line-height: 78px;
+        }
+        p {
+            font-size: $parragraph-size;
+            font-weight: 400;
+            line-height: 32px;
+        }
+        button {
+            width: 260px;
+            height: 75px;
+            margin-top: 100px;
+            padding: 20px;
+            background-color: #FA9500;
+            border-radius: 35px;
+            color: white;
+            font-size: 23px;
+            line-height: 30px;
+            border: none;
+            &:hover {
+                scale: 1.1;
+                box-shadow: 0 2px 2px 2px #FA9500;
+            }
+        }
+    }
+    &--image {
+        width: 50%;
+        border-radius: 25px;
+        margin: 0 50px;
+        img {
+            width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 25px;
+        }
+    }
+}
+
+section {
+    width: 100%;
+    height: fit-content;
+    margin: 50px auto;
+    padding: 10px 25px;
+    h2 {
+        color: $primary-text-color;
+        font-size: 50px;
+        font-weight: 400;
+    }
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 25px;
+}
+
+.product--card {
+    width: 325px;
+    height: 500px;
+    padding: 25px;
+    border-radius: 8px;
+    @include FlexCenter(column, center, center);
+    &:hover {
+        scale: 1.5;
+        box-shadow: 0 4px 4px 4px $tertiary-color;
+    }
+    svg {
+        align-self: flex-end;
+        color: $primary-text-color;
+    }
+    img {
+        width: 240px;
+        height: 300px;
+        place-self: center;
+        margin: 0 auto;
+        margin-top: 25px;
+        border-radius: 8px;
+    }
+    h3 {
+        align-self: center;
+        width: 240px;
+        font-size: 25px;
+        font-weight: 600;
+        line-height: 33px;
+        margin: 10px auto;
+    }
+    p {
+        width: 240px;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 19px;
+        align-self: center;
+        margin: 10px auto;
+    }
+    &__health {
+        background-color: $secondary-color;
+        h3 {
+            color: $primary-text-color;
+        }
+        p {
+            color: $primary-text-color;
+        }
+    }
+    &__furniture {
+        background-color: $tertiary-color;
+        &:hover {
+            scale: 1.5;
+            box-shadow: 0 4px 4px 4px $secondary-color;
+        }
+    }
+    svg {
+        stroke: #FFF;
+    }
+    h3 {
+        color: #FFF;
+    }
+    p {
+        color: #FFF;
+    }
+}
+
+.main-info__about {
+    @include FlexCenter(row, space-between, center);
+    .info__about--earth {
+        @include FlexCenter(row, space-between, center);
+        img {
+            width: 160px;
+            height: 140px;
+            margin: 25px;
+        }
+        p {
+            width: 360px;
+            height: 162px;
+            font-size: 30px;
+            line-height: 39px;
+            font-weight: 500;
+            color: #E86424;
+        }
+    }
+    .info__about--innovation {
+        @extend .info__about--earth
+    }
+}
+
+.main-info__gallery .gallery-images {
+    @include FlexCenter(row, center, center);
+    div {
+        width: 400px;
+        height: 400px;
+        margin: 100px 50px;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 25px;
+            &:hover {
+                scale: 1.1;
+                box-shadow: 0 4px 4px 4px $primary-text-color;
+            }
+        }
+    }
+}
+
+.main-info__map {
+    .map-image {
+        width: 100%;
+        border-radius: 16px;
+    }
+    .map-title {
+        font-size: 35px;
+        font-weight: 400;
+        line-height: 45px;
+    }
+    .map-address {
+        font-size: 25px;
+        font-weight: 400;
+        line-height: 35px;
+    }
+    p {
+        color: #E86424;
+    }
+}
+
+.footer {
+    $background: #FA9500;
+    background-color: $background;
+    width: 100%;
+    height: fit-content;
+    padding: 25px 50px;
+    @include FlexCenter(column, flex-start, flex-start);
+    .logo {
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 39px;
+        color: #FFF;
+    }
+    p {
+        color: #FFF;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 29px;
+    }
+    .social-media {
+        @include FlexCenter(row, center, center);
+        width: 100%;
+        align-self: center;
+        img {
+            margin: 0 15px;
+        }
+    }
+}
